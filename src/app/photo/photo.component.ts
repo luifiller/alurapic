@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-photo',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./photo.component.css']
 })
 export class PhotoComponent {
-  description = 'Leão';
-  url = 'https://images.pexels.com/photos/33045/lion-wild-africa-african.jpg'
+  // quando inserido o decorator "@Input()" às propriedades, estas se tornam inbounding properties, ou seja, receberá o seu valor de forma declarativa (o que está declarado lá no template do app.component.ts)
+  @Input() url: string = '';
+  @Input() description: string = '';
+
 }
