@@ -1,10 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { PhotoService } from './photos/photo/photo.service';
 import { Component, Injectable } from '@angular/core';
-
-interface Array {
-  url: string;
-  description: string;
-}
+import { Photo } from './photos/photo/photo';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +8,11 @@ interface Array {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  photos: Array[] = [];
+  photos: Photo[] = [];
 
-  constructor(http: HttpClient) {
-    const observable = http
-      .get<Array[]>('http://localhost:3000/flavio/photos')
-      .subscribe((photos) => this.photos = photos
-      )
+  constructor(private photoService: PhotoService) {
+    this.photoService
+      .listFromUser('flavio')
+      .subscribe((photos) => (this.photos = photos));
   }
 }
