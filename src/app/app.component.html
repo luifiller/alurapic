@@ -1,2 +1,5 @@
-<app-photo url="https://images.pexels.com/photos/33045/lion-wild-africa-african.jpg" description="Leão"></app-photo>
-<app-photo url="https://cdn.pixabay.com/photo/2016/08/20/06/49/panthera-leo-1606964_1280.jpg" description="Leoa"></app-photo>
+<app-photo
+  *ngFor="let item of photos"
+  [url]="item.url"
+  [description]="item.description"
+></app-photo>
